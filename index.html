@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 8px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .loading {
+            display: none;
+            margin-top: 10px;
+            font-style: italic;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Route Finder</h1>
+    <form id="routeForm">
+        <label>Origin:</label>
+        <input type="text" id="origin" required><br>
+        
+        <label>Destination:</label>
+        <input type="text" id="destination" required><br>
+        
+        <label>Preference:</label>
+        <select id="preference">
+            <option value="fastest">Fastest</option>
+            <option value="cheapest">Cheapest</option>
+        </select><br>
+
+        <button type="submit">Find Route</button>
+    </form>
+
+    <p class="loading" id="loading">Calculating route...</p>
+
+    <h2>Result</h2>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("routeForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            document.getElementById("loading").style.display = "block";  // Show loading message
+
+            const data = {
+                origin: document.getElementById("origin").value.trim(),
+                destination: document.getElementById("destination").value.trim(),
+                preference: document.getElementById("preference").value
+            };
+
+            try {
+                const response = await fetch("http://localhost:5000/find-route", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                document.getElementById("loading").style.display = "none"; // Hide loading message
+                
+                if (response.ok) {
+                    document.getElementById("result").innerHTML = `
+                        <p><b>Message:</b> ${result.message}</p>
+                        <p><b>Origin:</b> ${result.origin}</p>
+                        <p><b>Destination:</b> ${result.destination}</p>
+                        <p><b>Preference:</b> ${result.preference}</p>
+                        <p><b>Output File:</b> <a href="output.html" target="_blank">View Route</a></p>
+                    `;
+                } else {
+                    document.getElementById("result").innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+                }
+            } catch (error) {
+                document.getElementById("loading").style.display = "none"; // Hide loading message
+                document.getElementById("result").innerHTML = `<p style="color: red;">Server error. Try again later.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
