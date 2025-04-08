@@ -35,7 +35,7 @@ int main() {
                 res.set_content(R"({"error": "Invalid preference. Use 'fastest' or 'cheapest'"})", "application/json");
                 return;
             }
-
+ 
             // Load Graph and Validate Cities
             Graph graph(citiesFilename, routesFilename);
             if (graph.getCity(origin) == nullptr || graph.getCity(destination) == nullptr) {
