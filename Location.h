@@ -8,7 +8,7 @@
 class Route;
 
 using namespace std;
-
+ 
 class Location{
 public:
 		string country;
