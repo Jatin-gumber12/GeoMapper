@@ -10,7 +10,7 @@
 
 #include "Location.h"
 
-using namespace std;
+using namespace std; 
 
 vector<Location*> locationParser(string filename, vector<Route*> routes){
 	fstream locations(filename.c_str());
