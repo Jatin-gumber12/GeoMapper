@@ -9,7 +9,7 @@ using namespace std;
 class Location;
 
 const float MULTI = 3;
-
+ 
 class Route{
 public:
 		Location* origin;
