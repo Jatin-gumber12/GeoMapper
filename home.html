@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route_Xplorer | Journey Beyond Limits</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+        
+        /* Ultra-Smooth Video Container */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        }
+        
+        /* Premium Video Styling */
+        #bg-video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
+            /* Hardware Acceleration */
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            perspective: 1000px;
+            
+            /* Smooth Playback */
+            will-change: transform, opacity;
+            filter: brightness(0.8) contrast(1.1);
+            transition: filter 0.5s ease;
+        }
+        
+        /* Video Quality Enhancer */
+        #bg-video.playing {
+            filter: brightness(1) contrast(1.2);
+            animation: subtlePulse 15s infinite alternate;
+        }
+        
+        @keyframes subtlePulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.02); }
+        }
+        
+        /* Content Overlay */
+        .content {
+            position: relative;
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        /* Animated Title */
+        .title {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #fff, #ddd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleEntrance 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            letter-spacing: 2px;
+        }
+        
+        @keyframes titleEntrance {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Premium Continue Button */
+        .continue-btn {
+            position: relative;
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 18px 45px;
+            background: linear-gradient(45deg, #4CAF50, #2E8B57);
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: scale(0.95);
+            opacity: 0;
+            animation: btnEntrance 1s 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #2E8B57, #4CAF50);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .continue-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .continue-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .continue-btn:active {
+            transform: scale(0.98) translateY(0);
+        }
+        
+        .continue-btn span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .continue-btn:hover span {
+            transform: translateX(5px);
+        }
+        
+        @keyframes btnEntrance {
+            0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        /* Subtle Particle Effect */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .continue-btn {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ultra-Smooth Video Background -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="videoplayback.webm" type="video/webm">
+            <source src="videoplayback.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <!-- Animated Particles Background -->
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- Premium Content -->
+    <div class="content">
+        <h1 class="title">GeoMapper</h1>
+        <a href="index.html" class="continue-btn">
+            <span>Begin Journey →</span>
+        </a>
+    </div>
+
+    <!-- Smooth Loading Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bg-video');
+            
+            // Force high-quality rendering
+            video.addEventListener('loadedmetadata', function() {
+                video.classList.add('playing');
+                
+                // iOS specific handling
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                    video.playsInline = true;
+                    video.setAttribute('playsinline', '');
+                    video.play().catch(e => {
+                        // Fallback for iOS autoplay restrictions
+                        document.addEventListener('touchstart', function() {
+                            video.play();
+                        }, { once: true });
+                    });
+                }
+            });
+            
+            // Start playback with quality optimization
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    video.muted = true;
+                    video.play();
+                });
+            }
+            
+            // Add subtle hover effect to button
+            const btn = document.querySelector('.continue-btn');
+            btn.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 40px rgba(0,0,0,0.4)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            });
+        });
+    </script>
+    
+    <!-- Particle.js for extra flair -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles if library loads
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.3, width: 1 },
+                    move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
