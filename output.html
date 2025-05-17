@@ -1,27 +1,340 @@
-<HTML><HEAD><TITLE>Shortest path </TITLE></HEAD><script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false'></script><script>function initialize() { var myOptions = { zoom: 3, center: new google.maps.LatLng(0, 0), mapTypeId: google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map'), myOptions);
-var marker0 = new google.maps.Marker({ position: new google.maps.LatLng(53.35, -6.25), map: map, title: "Dublin, Ireland"});
-var marker1 = new google.maps.Marker({ position: new google.maps.LatLng(41.9, 12.4833), map: map, title: "Rome, Italy"});
-var contentString0 = "Dublin, Ireland --> Rome, Italy(plane - 21 hours - $688)"; var path0 = new google.maps.Polyline({ path: [new google.maps.LatLng(53.35, -6.25), new google.maps.LatLng(41.9, 12.4833)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path0.setMap(map); google.maps.event.addListener(path0, 'click', function(event) { alert(contentString0);});
-var marker2 = new google.maps.Marker({ position: new google.maps.LatLng(41.9, 12.4833), map: map, title: "Rome, Italy"});
-var marker3 = new google.maps.Marker({ position: new google.maps.LatLng(52.2167, 21), map: map, title: "Warsaw, Poland"});
-var contentString1 = "Rome, Italy --> Warsaw, Poland(plane - 1.8 hours - $460)"; var path1 = new google.maps.Polyline({ path: [new google.maps.LatLng(41.9, 12.4833), new google.maps.LatLng(52.2167, 21)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path1.setMap(map); google.maps.event.addListener(path1, 'click', function(event) { alert(contentString1);});
-var marker4 = new google.maps.Marker({ position: new google.maps.LatLng(52.2167, 21), map: map, title: "Warsaw, Poland"});
-var marker5 = new google.maps.Marker({ position: new google.maps.LatLng(51.6, -0.0833333), map: map, title: "London, United Kingdom of Great Britain and Northern Ireland"});
-var contentString2 = "Warsaw, Poland --> London, United Kingdom of Great Britain and Northern Ireland(bus - 7.5 hours - $105.81)"; var path2 = new google.maps.Polyline({ path: [new google.maps.LatLng(52.2167, 21), new google.maps.LatLng(51.6, -0.0833333)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path2.setMap(map); google.maps.event.addListener(path2, 'click', function(event) { alert(contentString2);});
-var marker6 = new google.maps.Marker({ position: new google.maps.LatLng(51.6, -0.0833333), map: map, title: "London, United Kingdom of Great Britain and Northern Ireland"});
-var marker7 = new google.maps.Marker({ position: new google.maps.LatLng(39.9167, 116.333), map: map, title: "Beijing, China"});
-var contentString3 = "London, United Kingdom of Great Britain and Northern Ireland --> Beijing, China(plane - 10 hours - $666)"; var path3 = new google.maps.Polyline({ path: [new google.maps.LatLng(51.6, -0.0833333), new google.maps.LatLng(39.9167, 116.333)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path3.setMap(map); google.maps.event.addListener(path3, 'click', function(event) { alert(contentString3);});
-var marker8 = new google.maps.Marker({ position: new google.maps.LatLng(39.9167, 116.333), map: map, title: "Beijing, China"});
-var marker9 = new google.maps.Marker({ position: new google.maps.LatLng(37.5167, 126.967), map: map, title: "Seoul, Republic of Korea"});
-var contentString4 = "Beijing, China --> Seoul, Republic of Korea(train - 40 hours - $300)"; var path4 = new google.maps.Polyline({ path: [new google.maps.LatLng(39.9167, 116.333), new google.maps.LatLng(37.5167, 126.967)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path4.setMap(map); google.maps.event.addListener(path4, 'click', function(event) { alert(contentString4);});
-var marker10 = new google.maps.Marker({ position: new google.maps.LatLng(37.5167, 126.967), map: map, title: "Seoul, Republic of Korea"});
-var marker11 = new google.maps.Marker({ position: new google.maps.LatLng(35.682, 139.69), map: map, title: "Tokyo, Japan"});
-var contentString5 = "Seoul, Republic of Korea --> Tokyo, Japan(plane - 16 hours - $650)"; var path5 = new google.maps.Polyline({ path: [new google.maps.LatLng(37.5167, 126.967), new google.maps.LatLng(35.682, 139.69)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path5.setMap(map); google.maps.event.addListener(path5, 'click', function(event) { alert(contentString5);});
-var marker12 = new google.maps.Marker({ position: new google.maps.LatLng(35.682, 139.69), map: map, title: "Tokyo, Japan"});
-var marker13 = new google.maps.Marker({ position: new google.maps.LatLng(14.6667, 121.05), map: map, title: "Manila, Philippines"});
-var contentString6 = "Tokyo, Japan --> Manila, Philippines(plane - 16 hours - $434)"; var path6 = new google.maps.Polyline({ path: [new google.maps.LatLng(35.682, 139.69), new google.maps.LatLng(14.6667, 121.05)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path6.setMap(map); google.maps.event.addListener(path6, 'click', function(event) { alert(contentString6);});
-var marker14 = new google.maps.Marker({ position: new google.maps.LatLng(14.6667, 121.05), map: map, title: "Manila, Philippines"});
-var marker15 = new google.maps.Marker({ position: new google.maps.LatLng(4.86667, 115), map: map, title: "Bandar Seri Begawan, Brunei Darussalam"});
-var contentString7 = "Manila, Philippines --> Bandar Seri Begawan, Brunei Darussalam(plane - 4.5 hours - $305)"; var path7 = new google.maps.Polyline({ path: [new google.maps.LatLng(14.6667, 121.05), new google.maps.LatLng(4.86667, 115)], strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2}); path7.setMap(map); google.maps.event.addListener(path7, 'click', function(event) { alert(contentString7);});
-} google.maps.event.addDomListener(window, 'load', initialize); </script></HEAD><BODY><div id='map' style='width:100%;height:100%;'></div></BODY>
-</HTML>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Path Visualization</title>
+    <style>
+        #map { height: 100vh; width: 100vw; }
+        #controls {
+            position: absolute; top: 10px; left: 10px;
+            z-index: 1000; background: rgba(255,255,255,0.9);
+            padding: 10px; border-radius: 8px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        #controls button {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        #controls button:hover {
+            background-color: #3367D6;
+            transform: translateY(-1px);
+        }
+        #controls button:active {
+            transform: translateY(1px);
+        }
+        #controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #progress {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        #progress img {
+            vertical-align: middle;
+            height: 20px;
+            width: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="controls">
+        <button id="startBtn" onclick='startAnimation()'>Start</button>
+        <button id="stopBtn" onclick='stopAnimation()' disabled>Stop</button>
+        <div id="progress">Ready to start</div>
+    </div>
+
+    <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap" async defer></script>
+    <script>
+        let map;
+        let planeMarker;
+        let animationId;
+        let currentPath = 0;
+        const paths = [];
+        const stopMarkers = [];
+        
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 0, lng: 0},
+                zoom: 2
+            });
+            
+            // Create plane marker
+            planeMarker = new google.maps.Marker({
+                position: {lat: 0, lng: 0},
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                    scale: 4,
+                    fillColor: '#EA4335',
+                    fillOpacity: 1,
+                    strokeWeight: 0
+                },
+                visible: false
+            });
+
+    stopMarkers.push(new google.maps.Marker({
+  position: {lat: 34.4667, lng: 69.1833},
+  map: map,
+  title: 'Kabul, Afghanistan',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+stopMarkers.push(new google.maps.Marker({
+  position: {lat: 35.7333, lng: 51.5},
+  map: map,
+  title: 'Tehran, Iran (Islamic Republic of)',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+stopMarkers.push(new google.maps.Marker({
+  position: {lat: 39.95, lng: 32.9},
+  map: map,
+  title: 'Ankara, Turkey',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+stopMarkers.push(new google.maps.Marker({
+  position: {lat: 30.0167, lng: 31.2333},
+  map: map,
+  title: 'Cairo, Egypt',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+stopMarkers.push(new google.maps.Marker({
+  position: {lat: -12, lng: -77},
+  map: map,
+  title: 'Lima, Peru',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+stopMarkers.push(new google.maps.Marker({
+  position: {lat: -33.4, lng: -70.6667},
+  map: map,
+  title: 'Santiago, Chile',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+stopMarkers.push(new google.maps.Marker({
+  position: {lat: -36.5, lng: -60},
+  map: map,
+  title: 'Buenos Aires, Argentina',
+  icon: {
+    url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+    scaledSize: new google.maps.Size(32, 32)
+  }
+}));
+paths.push({
+  polyline: new google.maps.Polyline({
+    path: [
+      {lat: 34.4667, lng: 69.1833},
+      {lat: 35.7333, lng: 51.5}
+    ],
+    strokeColor: '#4285F4',
+    strokeOpacity: 0.7,
+    strokeWeight: 3,
+    map: map
+  }),
+  origin: {lat: 34.4667, lng: 69.1833},
+  destination: {lat: 35.7333, lng: 51.5},
+  info: '<img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"> Afghanistan <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"> Iran (Islamic Republic of)'
+});
+google.maps.event.addListener(paths[0].polyline, 'click', function(event) {
+  alert(paths[0].info.replace(/<[^>]*>/g, ''));
+});
+paths.push({
+  polyline: new google.maps.Polyline({
+    path: [
+      {lat: 35.7333, lng: 51.5},
+      {lat: 39.95, lng: 32.9}
+    ],
+    strokeColor: '#4285F4',
+    strokeOpacity: 0.7,
+    strokeWeight: 3,
+    map: map
+  }),
+  origin: {lat: 35.7333, lng: 51.5},
+  destination: {lat: 39.95, lng: 32.9},
+  info: '<img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"> Iran (Islamic Republic of) <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"> Turkey'
+});
+google.maps.event.addListener(paths[1].polyline, 'click', function(event) {
+  alert(paths[1].info.replace(/<[^>]*>/g, ''));
+});
+paths.push({
+  polyline: new google.maps.Polyline({
+    path: [
+      {lat: 39.95, lng: 32.9},
+      {lat: 30.0167, lng: 31.2333}
+    ],
+    strokeColor: '#4285F4',
+    strokeOpacity: 0.7,
+    strokeWeight: 3,
+    map: map
+  }),
+  origin: {lat: 39.95, lng: 32.9},
+  destination: {lat: 30.0167, lng: 31.2333},
+  info: '<img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"> Turkey <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"> Egypt'
+});
+google.maps.event.addListener(paths[2].polyline, 'click', function(event) {
+  alert(paths[2].info.replace(/<[^>]*>/g, ''));
+});
+paths.push({
+  polyline: new google.maps.Polyline({
+    path: [
+      {lat: 30.0167, lng: 31.2333},
+      {lat: -12, lng: -77}
+    ],
+    strokeColor: '#4285F4',
+    strokeOpacity: 0.7,
+    strokeWeight: 3,
+    map: map
+  }),
+  origin: {lat: 30.0167, lng: 31.2333},
+  destination: {lat: -12, lng: -77},
+  info: '<img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"> Egypt <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"> Peru'
+});
+google.maps.event.addListener(paths[3].polyline, 'click', function(event) {
+  alert(paths[3].info.replace(/<[^>]*>/g, ''));
+});
+paths.push({
+  polyline: new google.maps.Polyline({
+    path: [
+      {lat: -12, lng: -77},
+      {lat: -33.4, lng: -70.6667}
+    ],
+    strokeColor: '#4285F4',
+    strokeOpacity: 0.7,
+    strokeWeight: 3,
+    map: map
+  }),
+  origin: {lat: -12, lng: -77},
+  destination: {lat: -33.4, lng: -70.6667},
+  info: '<img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"> Peru <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"> Chile'
+});
+google.maps.event.addListener(paths[4].polyline, 'click', function(event) {
+  alert(paths[4].info.replace(/<[^>]*>/g, ''));
+});
+paths.push({
+  polyline: new google.maps.Polyline({
+    path: [
+      {lat: -33.4, lng: -70.6667},
+      {lat: -36.5, lng: -60}
+    ],
+    strokeColor: '#4285F4',
+    strokeOpacity: 0.7,
+    strokeWeight: 3,
+    map: map
+  }),
+  origin: {lat: -33.4, lng: -70.6667},
+  destination: {lat: -36.5, lng: -60},
+  info: '<img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"> Chile <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"> Argentina'
+});
+google.maps.event.addListener(paths[5].polyline, 'click', function(event) {
+  alert(paths[5].info.replace(/<[^>]*>/g, ''));
+});
+
+            if (stopMarkers.length > 0) {
+                const bounds = new google.maps.LatLngBounds();
+                stopMarkers.forEach(marker => bounds.extend(marker.getPosition()));
+                map.fitBounds(bounds);
+            }
+
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const progressDiv = document.getElementById('progress');
+            if (paths.length > 0 && currentPath < paths.length) {
+                progressDiv.innerHTML = `Route ${currentPath+1} of ${paths.length}<br>${paths[currentPath].info}`;
+            }
+        }
+        
+        function animatePlane(timestamp) {
+            if (!window.startTime) window.startTime = timestamp;
+            const elapsed = timestamp - window.startTime;
+            const progress = Math.min(elapsed / 2000, 1);
+            
+            const path = paths[currentPath];
+            const lat = path.origin.lat + progress * (path.destination.lat - path.origin.lat);
+            const lng = path.origin.lng + progress * (path.destination.lng - path.origin.lng);
+            
+            planeMarker.setPosition({lat, lng});
+            planeMarker.setVisible(true);
+            
+            const angle = Math.atan2(path.destination.lng - path.origin.lng, 
+                                     path.destination.lat - path.origin.lat) * 180 / Math.PI;
+            planeMarker.setIcon({
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                scale: 4,
+                rotation: angle,
+                fillColor: '#EA4335',
+                fillOpacity: 1,
+                strokeWeight: 0
+            });
+            
+            if (progress < 1) {
+                animationId = requestAnimationFrame(animatePlane);
+            } else {
+                window.startTime = undefined;
+                currentPath++;
+                if (currentPath < paths.length) {
+                    updateProgress();
+                    setTimeout(() => {
+                        planeMarker.setVisible(false);
+                        animationId = requestAnimationFrame(animatePlane);
+                    }, 500);
+                } else {
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('stopBtn').disabled = true;
+                    planeMarker.setVisible(false);
+                    updateProgress();
+                }
+            }
+        }
+        
+        function startAnimation() {
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+            
+            if (currentPath >= paths.length) currentPath = 0;
+            
+            updateProgress();
+            window.startTime = undefined;
+            planeMarker.setPosition(paths[currentPath].origin);
+            animationId = requestAnimationFrame(animatePlane);
+        }
+        
+        function stopAnimation() {
+            cancelAnimationFrame(animationId);
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+            if (planeMarker) planeMarker.setVisible(false);
+            updateProgress();
+        }
+        
+        window.initMap = initMap;
+    </script>
+</body>
+</html>
