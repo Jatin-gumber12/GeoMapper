@@ -69,11 +69,11 @@
     }
 
     select {
-      background-color: white;
-      color: black;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #4caf50;
+}
 
     input:focus, select:focus {
       outline: none;
@@ -258,8 +258,8 @@
         if (response.ok) {
           document.getElementById("result").innerHTML = `
             <p><b>Message:</b> ${result.message}</p>
-            <p><b>Origin:</b> ${result.origin}</p>
-            <p><b>Destination:</b> ${result.destination}</p>
+            <p><b>Origin:</b> ${result.destination}</p>
+            <p><b>Destination:</b> ${result.origin}</p>
             <p><b>Preference:</b> ${result.preference}</p>
             <p><b>Output File:</b> <a href="output.html" target="_blank">View Route</a></p>
           `;
